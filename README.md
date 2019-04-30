@@ -1,10 +1,12 @@
 # Apache Kafka
 By Anthony Vilarim Caliani
 
-[![#](https://img.shields.io/badge/docker-18.09.2-dodgerblue.svg)](#) [![#](https://img.shields.io/badge/docker--compose-1.23.2-royalblue.svg)](#) [![#](https://img.shields.io/badge/apache--kafka-latest-lightgray.svg)](#) [![#](https://img.shields.io/badge/zookeper-latest-darkolivegreen.svg)](#)
+[![#](https://img.shields.io/badge/license-MIT-blue.svg)](#) [![#](https://img.shields.io/badge/docker-18.09.2-dodgerblue.svg)](#) [![#](https://img.shields.io/badge/docker--compose-1.23.2-royalblue.svg)](#) [![#](https://img.shields.io/badge/apache--kafka-latest-lightgray.svg)](#) [![#](https://img.shields.io/badge/zookeper-latest-darkolivegreen.svg)](#)
 
 ## Repository Description
 This is my Apache Kafka repository. Here you will find some stuff that I've done while I was learning about how to work with Apache Kafka.
+
+---
 
 ## Running
 ```sh
@@ -33,13 +35,13 @@ docker-compose exec kafka \
     --partitions 1 \
     --replication-factor 1 \
     --if-not-exists \
-    --zookeeper localhost:32181
+    --zookeeper localhost:2181
 
 # Checking if our topic was created
 docker-compose exec kafka  \
   kafka-topics --describe \
   --topic my-topic \
-  --zookeeper localhost:32181
+  --zookeeper localhost:2181
 
 # Producing messages
 docker-compose exec kafka  \
@@ -48,7 +50,7 @@ docker-compose exec kafka  \
 # Consuming messages
 docker-compose exec kafka  \
   kafka-console-consumer \
-  --bootstrap-server localhost:29092 \
+  --bootstrap-server localhost:9092 \
   --topic my-topic \
   --from-beginning \
   --max-messages 100
@@ -56,20 +58,9 @@ docker-compose exec kafka  \
 # THE END
 ```
 
-## Repository Projects
-- **X**: Soon...
-
-## Projects Map
-
-### X
-```
-X/
-└── ???
-```
-
 ---
 
-## External Links
+## Related Links
 - [Medium: Aprendendo na prática](https://medium.com/trainingcenter/apache-kafka-codifica%C3%A7%C3%A3o-na-pratica-9c6a4142a08f)
 - [Github: Confluent Inc. (Apache Kafka®)](https://github.com/confluentinc/cp-docker-images)
 
