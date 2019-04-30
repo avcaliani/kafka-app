@@ -14,8 +14,8 @@ for msg in consumer:
     decoded = None
     try:
         decoded = msg.value.decode('utf-8')
-    except expression as identifier:
-        decoded = 'Unable to parse'
+    except:
+        decoded = 'Unable to parse message!'
     print (
         "%s:%d:%d: key=%s value=%s" % (
             msg.topic, msg.partition, msg.offset, msg.key, decoded
