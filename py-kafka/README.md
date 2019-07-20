@@ -1,22 +1,28 @@
-# Py Kafka
+# 🐍 Py Kafka
 By Anthony Vilarim Caliani
 
-[![#](https://img.shields.io/badge/license-MIT-blue.svg)](#) [![#](https://img.shields.io/badge/python-3.6.7-yellow.svg)](#) [![#](https://img.shields.io/badge/kafka--python-1.4.6-lightgray.svg)](#)
+[![#](https://img.shields.io/badge/license-MIT-blue.svg)](#) [![#](https://img.shields.io/badge/python-3-yellow.svg)](#) [![#](https://img.shields.io/badge/kafka--python-1.4.6-lightgray.svg)](#)
 
-## Running
-- **[ Just Once ]** Create `venv` folder typing `python3 -m venv venv`
-- Use virtual environment typing `source venv/bin/activate` 
-- **[ Just Once ]** Install dependencies `pip install -r requirements.txt`
-- Execute _consumer_ typing `python consumer.py`
-- Execute _producer_ typing `python producer.py` 
+## Quick Start
+```sh
+# JUST ONCE: Create `venv` folder typing
+python3 -m venv venv
 
-Now, keep your eyes on application console, because everything will be logged 😉
+# Using python venv
+source venv/bin/activate
 
----
+# JUST ONCE: Install dependencies
+pip install -r requirements.txt
+
+# Execute "kafka consumer"
+python producer.py
+
+# In another terminal execute "kafka consumer"
+# Don't forget to activate python venv before running ;)
+python consumer.py
+```
+
+Now, keep your eyes on application console because everything will be logged 😉
 
 ## Related Links
 - [Kafka Python Docs: Usage](https://kafka-python.readthedocs.io/en/master/usage.html)
-
----
-
-_You can find [@avcaliani](#) at [GitHub](https://github.com/avcaliani) or [GitLab](https://gitlab.com/avcaliani)._
