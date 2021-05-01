@@ -20,10 +20,12 @@ docker-compose logs zookeeper | grep -i binding
 docker-compose logs kafka | grep -i started
 ```
 
-### Optional Steps
+### Creating Topic
 ```bash
-./kafka.sh --create "sales-topic"
+./kafka.sh --create   "sales-topic"
 ./kafka.sh --describe "sales-topic"
+
+# Optional! 
 ./kafka.sh --test-pub "sales-topic"
 ./kafka.sh --test-sub "sales-topic"
 ```

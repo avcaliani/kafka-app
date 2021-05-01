@@ -38,7 +38,8 @@ def get_message():
         },
         'quantity': quantity,
         'total': quantity * product[1],
-        'created_at': datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
+        'created_at': datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S'),
+        'source': 'python-mock'
     }
 
 

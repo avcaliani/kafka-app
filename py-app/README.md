@@ -1,15 +1,10 @@
-# 🐍 Py Kafka
+# 🐍 Py App
 By Anthony Vilarim Caliani
 
 ![#](https://img.shields.io/badge/license-MIT-blue.svg) ![#](https://img.shields.io/badge/python-3.8.x-yellow.svg)
 
 ## Quick Start
 ```sh
-# Creating Topic
-cd .. \
-    && ./kafka.sh --create "python-topic" \
-    && cd -
-
 # Initializing Virtual Env
 python3 -m venv .venv \
     && source .venv/bin/activate \
