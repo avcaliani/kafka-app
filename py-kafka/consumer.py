@@ -11,7 +11,7 @@
 import json
 from kafka import KafkaConsumer
 
-KAFKA_TOPIC = 'python-topic'
+KAFKA_TOPIC = 'sales-topic'
 KAFKA_SERVERS = ['localhost:9092']
 
 if __name__ == '__main__':

@@ -38,3 +38,14 @@ services:
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: zookeeper:2181
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
       SCHEMA_REGISTRY_LISTENERS: http://schema-registry:8081
+
+  spark-app:
+    user: root
+    container_name: spark-app
+    build:
+      context: ./spark-app/
+    image: spark-app
+    working_dir: /app
+    volumes:
+      - ./spark-app:/app
+      - ./spark-app/datalake:/datalake

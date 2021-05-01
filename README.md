@@ -22,10 +22,10 @@ docker-compose logs kafka | grep -i started
 
 ### Optional Steps
 ```bash
-./kafka.sh --create "my-topic"
-./kafka.sh --describe "my-topic"
-./kafka.sh --test-pub "my-topic"
-./kafka.sh --test-sub "my-topic"
+./kafka.sh --create "sales-topic"
+./kafka.sh --describe "sales-topic"
+./kafka.sh --test-pub "sales-topic"
+./kafka.sh --test-sub "sales-topic"
 ```
 
 ## Kafka Tool

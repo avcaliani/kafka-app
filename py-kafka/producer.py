@@ -15,7 +15,7 @@ from time import sleep
 from kafka import KafkaProducer
 
 # Kafka
-KAFKA_TOPIC = 'python-topic'
+KAFKA_TOPIC = 'sales-topic'
 KAFKA_SERVERS = ['localhost:9092']
 
 # Mock
@@ -38,7 +38,7 @@ def get_message():
         },
         'quantity': quantity,
         'total': quantity * product[1],
-        'created_at': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        'created_at': datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
     }
 
 
