@@ -1,0 +1,7 @@
+# Spring -----------------------------
+server.port: ${API_PORT:9000}
+
+# App --------------------------------
+app:
+  name: spring-app
+  source: api
