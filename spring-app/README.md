@@ -11,6 +11,12 @@ API_URL="http://localhost:8080"    # Docker
 
 # Actuator Endpoints
 curl "$API_URL/actuator/health" | json_pp
+
+# Publish \o/
+curl -X POST \
+  -H "Content-Type: application/json" \
+  --data '{ "user": "anthony", "product": { "name": "orange", "price": 0.99 }, "quantity": 16 }' \
+  "$API_URL/v1/sale" | json_pp
 ```
 
 Now, keep your eyes on application console because everything will be logged 😉
