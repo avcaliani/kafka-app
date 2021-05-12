@@ -12,6 +12,8 @@ API_URL="http://localhost:8080"    # Docker
 # Actuator Endpoints
 curl "$API_URL/actuator/health" | json_pp
 
+curl "$API_URL/actuator/health/kafka" | json_pp
+
 # Publish \o/
 curl -X POST \
   -H "Content-Type: application/json" \

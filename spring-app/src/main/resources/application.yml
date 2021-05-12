@@ -6,6 +6,12 @@ app:
   name: spring-app
   source: api
 
+# Health Check -----------------------
+management:
+  endpoint:
+    health:
+      show-details: "ALWAYS"
+
 # Kafka ------------------------------
 spring:
   kafka:
