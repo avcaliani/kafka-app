@@ -28,12 +28,12 @@ def sales_schema():
 
 
 def parse_msg(df):
-    return df.withColumn('data', f.from_json(f.col('value').cast('string'), sales_schema())) \
-        .select('data.*')
+    return df.withColumn('value', f.from_json(f.col('value').cast('string'), sales_schema()))
 
 
 def process(df):
-    return df.withColumn('product', f.struct('product.name', 'product.price', 'quantity')) \
+    return df.select('value.*') \
+        .withColumn('product', f.struct('product.name', 'product.price', 'quantity')) \
         .withColumn('created_at', f.to_date(
             f.regexp_replace(f.col('created_at'), r'\s\d+:\d+:\d+', ''),
             'yyyy-MM-dd'
@@ -57,10 +57,13 @@ if __name__ == '__main__':
             .option('subscribe', KAFKA_TOPIC) \
             .load()
         
-        print(f'Records Found: {df.count()}')
         df = parse_msg(df)
-        df = process(df)
+        df.cache()
+        df.printSchema()
+        df.show()
+        print(f'Records Found: {df.count()}')
 
+        df = process(df)
         df.cache()
         df.printSchema()
         df.show()
