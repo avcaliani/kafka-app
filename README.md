@@ -2,7 +2,9 @@
 By Anthony Vilarim Caliani
 
 ![License](https://img.shields.io/github/license/avcaliani/aws-app?logo=apache&color=lightseagreen)
-
+![#](https://img.shields.io/badge/python-3.x-yellow.svg)
+![#](https://img.shields.io/badge/apache--spark-3.1.x-ff4757.svg)
+![#](https://img.shields.io/badge/spring--boot-2.4.5-green.svg)
 
 This is my Apache Kafka repository. Here you will find some stuff that I've done while I was learning about how to work with Apache Kafka.
 
