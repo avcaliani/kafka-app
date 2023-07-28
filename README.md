@@ -1,66 +1,71 @@
 # 📫 Kafka App
 
-By Anthony Vilarim Caliani
-
 ![License](https://img.shields.io/github/license/avcaliani/kafka-app?logo=apache&color=lightseagreen)
-![#](https://img.shields.io/badge/python-3.x-yellow.svg)
-![#](https://img.shields.io/badge/apache--spark-3.1.x-ff4757.svg)
-![#](https://img.shields.io/badge/spring--boot-2.4.5-green.svg)
 
 This is my Apache Kafka repository.  
 Here you will find some stuff that I've done while I was learning about how to work with Apache Kafka.
 
-In this repository you will find some experiments...
+## Repository Tags
 
-| project      | description                                        |
-|--------------|----------------------------------------------------|
-| `py-app`     | Simple Kafka producer and consumer in Python.      |
-| `spark-app`  | PySpark Kafka consumer (streaming and batch).      |
-| `spring-app` | Spring Boot API that produce and consume messages. |
+- `v1.0` - Here you will find some PoCs that produce and consume data from Kafka developed in Spring Boot, PySpark and Python.
+- `v2.0` - Here you will find the projects I've created while doing a Kafka course from Alura.
 
-## Quick Start
+The `master` branch will have the most recent code that I've created, to check more details of a past development checkout the specific tag you want.
 
-Before you start exploring the projects you have to "up" your own kafka.
+## Projects
 
-```bash
-# Create Kafka and Zookeper containers
-docker-compose up -d
+- Project 01 - TBD
 
-# Checking if everything is okay
-docker-compose ps
+> ℹ️ To execute the projects you will need a Kafka instance running, to create your check the [next section](#quick-start).
 
-# Checking Zookeper
-docker-compose logs zookeeper | grep -i binding
+### Quick Start
 
-# Checking Kafka (It may take a few seconds to start)
-docker-compose logs kafka | grep -i started
-```
-
-### Let's test it?
+In this section we are going to up a local Kafka.
 
 ```bash
-# Create a new topic
-./kafka.sh --create   "sales-topic"
+# Build & Up
+docker-compose build && docker-compose up -d
 
-# Checking if it worked
-./kafka.sh --describe "sales-topic"
+# Logs
+docker-compose logs kafka
 
-# Optional!
-# The next steps are optional, you cant try them in case you want to test the kafka via CLI.
-
-# Kafka Producer
-./kafka.sh --test-pub "sales-topic"
-
-# Kafka Consumer
-./kafka.sh --test-sub "sales-topic"
+# Shutting Down
+docker-compose down
 ```
 
-### Related Links
+### Playground
 
+Here are some terminal commands you can try to explore your own Kafka \o/
+
+```bash
+# Create your first topic \o/
+docker-compose exec kafka kafka-topics.sh \
+    --create \
+    --bootstrap-server "localhost:9092" \
+    --replication-factor "1" \
+    --partitions "1" \
+    --topic "MY_TOPIC"
+
+# Check the available topics
+docker-compose exec kafka kafka-topics.sh --list --bootstrap-server "localhost:9092"
+
+# Producing messages ✉️
+docker-compose exec kafka kafka-console-producer.sh \
+    --broker-list "localhost:9092" \
+    --topic "MY_TOPIC"
+
+# Consuming messages 🔎
+docker-compose exec kafka kafka-console-consumer.sh \
+    --bootstrap-server "localhost:9092" \
+    --topic "MY_TOPIC" --from-beginning
+```
+
+## Useful Links
+
+- [Apache Kafka](https://kafka.apache.org/downloads)
 - [Kafka Tool - UI Tool 4 Kafka](https://www.kafkatool.com/download.html)
 - [Medium: Aprendendo na prática](https://medium.com/trainingcenter/apache-kafka-codifica%C3%A7%C3%A3o-na-pratica-9c6a4142a08f)
-- [Github: Confluent Inc. (Apache Kafka®)](https://github.com/confluentinc/cp-docker-images)
 
----
+<br/>
 
 🧙‍♂️ _"If in doubt Meriadoc, always follow your nose." - Gandalf_

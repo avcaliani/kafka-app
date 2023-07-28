@@ -1,7 +1,9 @@
-# Generated Stuff
-.venv
+# OS
 .DS_Store
 
 # IDEs
 .vscode
 .idea
+
+# Virtual Environments
+.venv
