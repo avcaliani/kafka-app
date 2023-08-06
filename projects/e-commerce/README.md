@@ -21,11 +21,13 @@ Here it is our producer.
 python projects/e-commerce/new_order_service.py
 ```
 
-In another terminal we can execute our "kafka consumer".
+In another terminal we can execute the consumers.
 > 💡 Don't forget to activate python venv before running ;)
 
 ```bash
 python projects/e-commerce/fraud_detector_service.py
+python projects/e-commerce/email_service.py
+python projects/e-commerce/log_service.py
 ```
 
 Now, keep your eyes on application console because everything will be logged 😉

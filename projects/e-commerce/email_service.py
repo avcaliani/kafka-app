@@ -4,14 +4,14 @@ from utils.display import show_received_message
 
 from kafka import KafkaConsumer
 
-KAFKA_TOPIC = "ECOMMERCE_NEW_ORDER"
+KAFKA_TOPIC = "ECOMMERCE_NEW_EMAIL"
 
 
 def run() -> None:
-    print("🕵️ FRAUD DETECTOR SERVICE\nPress Ctrl+c to stop!")
+    print(f"📧 E-MAIL SERVICE\nPress Ctrl+c to stop!")
     consumer = KafkaConsumer(
         bootstrap_servers=["localhost:9092"],
-        group_id="fraud-detector-service",
+        group_id="email-service",
         value_deserializer=lambda msg: json.loads(msg.decode("utf-8")),
         enable_auto_commit=True,
         auto_offset_reset="earliest",

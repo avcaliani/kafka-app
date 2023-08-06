@@ -4,25 +4,9 @@ from typing import Tuple
 from uuid import uuid4
 
 import names
-from kafka.producer.future import FutureRecordMetadata, RecordMetadata
-from utils.color import green
+from utils.display import DATETIME_FORMAT, show_sent_message
 
 from kafka import KafkaProducer
-
-DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
-
-
-def showResponse(response: FutureRecordMetadata, message: str) -> None:
-    metadata: RecordMetadata = response.get()
-    timestamp = datetime.utcfromtimestamp(metadata.timestamp / 1000)
-    print(
-        f"📦 "
-        f"{green('Topic')}: {metadata.topic} | "
-        f"{green('Partition')}: {metadata.partition} | "
-        f"{green('Offset')}: {metadata.offset} | "
-        f"{green('Timestamp')}: {timestamp.strftime(DATETIME_FORMAT)} | "
-        f"{green('Message')}: {message}"
-    )
 
 
 def new_order() -> Tuple[dict, dict]:
@@ -32,7 +16,7 @@ def new_order() -> Tuple[dict, dict]:
         "customer_id": customer_id,
         "customer_name": customer_name,
         "customer_email": f"{customer_name.replace(' ', '.').lower()}@github.com",
-        "email_template": "template__new_order"
+        "email_template": "template__new_order",
     }
     order_msg = {
         "id": str(uuid4()),
@@ -44,15 +28,19 @@ def new_order() -> Tuple[dict, dict]:
 
 
 def run() -> None:
-    print("🛒 New Order Service\nPress Ctrl+c to stop!")
+    print("🛒 NEW ORDER SERVICE\nPress Ctrl+c to stop!")
     producer = KafkaProducer(
         bootstrap_servers=["localhost:9092"],
         value_serializer=lambda v: json.dumps(v).encode("utf-8"),
     )
     try:
         email_msg, order_msg = new_order()
-        showResponse(producer.send(topic="ECOMMERCE_NEW_ORDER", value=order_msg), order_msg)
-        showResponse(producer.send(topic="ECOMMERCE_NEW_EMAIL", value=email_msg), email_msg)
+        show_sent_message(
+            producer.send(topic="ECOMMERCE_NEW_ORDER", value=order_msg), order_msg
+        )
+        show_sent_message(
+            producer.send(topic="ECOMMERCE_NEW_EMAIL", value=email_msg), email_msg
+        )
     except (KeyboardInterrupt, SystemExit):
         producer.close()
         print("Bye bye!")
