@@ -3,6 +3,7 @@ from datetime import datetime
 from random import randint
 from typing import Tuple
 from uuid import uuid4
+from time import sleep
 
 import names
 from utils.display import DATETIME_FORMAT, show_sent_message
@@ -39,12 +40,16 @@ def run() -> None:
     try:
         for _ in range(0, n_messages):
             email_msg, order_msg = new_order()
+            customer_id = bytes(order_msg["customer_id"], "utf-8")
             show_sent_message(
-                producer.send(topic="ECOMMERCE_NEW_ORDER", value=order_msg), order_msg
+                producer.send(topic="ECOMMERCE_NEW_ORDER", key=customer_id, value=order_msg), 
+                order_msg
             )
             show_sent_message(
-                producer.send(topic="ECOMMERCE_NEW_EMAIL", value=email_msg), email_msg
+                producer.send(topic="ECOMMERCE_NEW_EMAIL", key=customer_id, value=email_msg), 
+                email_msg
             )
+            sleep(randint(0, 10) / 10)
         print(f"\n{n_messages} messages sent ✅")
     except (KeyboardInterrupt, SystemExit):
         print("Bye bye!")

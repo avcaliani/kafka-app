@@ -32,6 +32,7 @@ def show_received_message(message: ConsumerRecord) -> None:
         f"{green('Topic')}: {message.topic} | "
         f"{green('Partition')}: {message.partition} | "
         f"{green('Offset')}: {message.offset} | "
+        f"{green('Key')}: {message.key} | "
         f"{green('Timestamp')}: {timestamp.strftime(DATETIME_FORMAT)} | "
         f"{green('Message')}: {message.value}"
     )
