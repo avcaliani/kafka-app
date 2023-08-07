@@ -66,6 +66,20 @@ docker-compose exec kafka kafka-consumer-groups.sh \
     --bootstrap-server "localhost:9092"
 ```
 
+### Interesting Stuff
+
+**What about having multiple consumers on the same topic?**
+You can have multiple consumers subscribed to the same topic.  
+If their group ids are different, then all of them will receive the messages.  
+If they belong to the same group id the consumers will be divided to read the available partitions. This means the consumers in the same group won't be receiving the same messages, this also means that you CAN'T have more consumers than partitions, because if you do the extra consumers will have no use, since no partitions will be assigned to them.
+
+**How does the Kafka split the messages within the partitions?**  
+Kafka defines the message partition based on the message key.
+
+**Rebalancing Issues**  
+One way to avoid issues related to Kafka rebalancing is setting the "max poll records" configuration to `1`.  
+In this way the consumer will receive 1 message at a time, so if the rebalance happens the Kafka may lose the track at maximum of 1 record.
+
 ## Useful Links
 
 - [Apache Kafka](https://kafka.apache.org/downloads)
