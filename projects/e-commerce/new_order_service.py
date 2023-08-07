@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+from random import randint
 from typing import Tuple
 from uuid import uuid4
 
@@ -33,17 +34,22 @@ def run() -> None:
         bootstrap_servers=["localhost:9092"],
         value_serializer=lambda v: json.dumps(v).encode("utf-8"),
     )
+    n_messages = randint(10, 1000) 
+    print(f"Messages to be sent 👉 {n_messages}")
     try:
-        email_msg, order_msg = new_order()
-        show_sent_message(
-            producer.send(topic="ECOMMERCE_NEW_ORDER", value=order_msg), order_msg
-        )
-        show_sent_message(
-            producer.send(topic="ECOMMERCE_NEW_EMAIL", value=email_msg), email_msg
-        )
+        for _ in range(0, n_messages):
+            email_msg, order_msg = new_order()
+            show_sent_message(
+                producer.send(topic="ECOMMERCE_NEW_ORDER", value=order_msg), order_msg
+            )
+            show_sent_message(
+                producer.send(topic="ECOMMERCE_NEW_EMAIL", value=email_msg), email_msg
+            )
+        print(f"\n{n_messages} messages sent ✅")
     except (KeyboardInterrupt, SystemExit):
-        producer.close()
         print("Bye bye!")
+    finally:
+        producer.close()
 
 
 if __name__ == "__main__":

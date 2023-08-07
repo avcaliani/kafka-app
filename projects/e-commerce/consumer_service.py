@@ -44,8 +44,9 @@ def run(args: Namespace) -> None:
         for msg in consumer:
             show_received_message(msg)
     except (KeyboardInterrupt, SystemExit):
-        consumer.close()
         print("Bye bye!")
+    finally:
+        consumer.close()
 
 
 if __name__ == "__main__":

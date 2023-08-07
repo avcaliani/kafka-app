@@ -58,6 +58,12 @@ docker-compose exec kafka kafka-console-producer.sh \
 docker-compose exec kafka kafka-console-consumer.sh \
     --bootstrap-server "localhost:9092" \
     --topic "MY_TOPIC" --from-beginning
+
+# Cheking our topics
+docker-compose exec kafka kafka-consumer-groups.sh \
+    --all-groups \
+    --describe \
+    --bootstrap-server "localhost:9092"
 ```
 
 ## Useful Links
