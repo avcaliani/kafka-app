@@ -25,9 +25,23 @@ In another terminal we can execute the consumers.
 > 💡 Don't forget to activate python venv before running ;)
 
 ```bash
-python projects/e-commerce/fraud_detector_service.py
-python projects/e-commerce/email_service.py
-python projects/e-commerce/log_service.py
+# Log Service
+python projects/e-commerce/consumer_service.py \
+    -n "📚 log service" \
+    -g "log-service" \
+    -p "ECOMMERCE*"
+
+# Fraud Detector Service
+python projects/e-commerce/consumer_service.py \
+    -n "🕵️ fraud detector service" \
+    -g "fraud-detector-service" \
+    -t "ECOMMERCE_NEW_ORDER"
+
+# e-Mail Service
+python projects/e-commerce/consumer_service.py \
+    -n "📧 e-mail service" \
+    -g "email-service" \
+    -t "ECOMMERCE_NEW_EMAIL"
 ```
 
 Now, keep your eyes on application console because everything will be logged 😉
