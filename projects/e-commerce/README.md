@@ -2,6 +2,11 @@
 
 ![#](https://img.shields.io/badge/python-3.10.x-yellow.svg)
 
+In this project we are going to explore the basics of Kafka.  
+For that we are going to use a simple e-commerce scenario where we will have a producer that will be responsible for creating the "orders" and some different consumers that will consume the new orders data.
+
+![diagram](../../.docs/ecommerce-diagram.png)
+
 ## Quick Start
 
 To start coding, create your own virtual environment.

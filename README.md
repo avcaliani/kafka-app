@@ -14,7 +14,9 @@ The `master` branch will have the most recent code that I've created, to check m
 
 ## Projects
 
-- Project 01 - TBD
+01. [e-commerce] 👉 Exploring Kafka creating simple producers and consumers.
+
+[e-commerce]: projects/e-commerce/README.md
 
 > ℹ️ To execute the projects you will need a Kafka instance running, to create your check the [next section](#quick-start).
 
