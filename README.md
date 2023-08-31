@@ -1,26 +1,45 @@
 # 📫 Kafka App
 
 ![License](https://img.shields.io/github/license/avcaliani/kafka-app?logo=apache&color=lightseagreen)
+![#](https://img.shields.io/badge/python-3.10.x-yellow.svg)
 
 This is my Apache Kafka repository.  
 Here you will find some stuff that I've done while I was learning about how to work with Apache Kafka.
 
-## Repository Tags
+You can find all the exeperiments I've done through the **repository tags**.  
 
-- `v1.0` - Here you will find some PoCs that produce and consume data from Kafka developed in Spring Boot, PySpark and Python.
-- `v2.0` - Here you will find the projects I've created while doing a Kafka course from Alura.
+| tag    | description |
+|--------|-------------|
+| `v1.0` | PoCs that produce and consume data from Kafka, they were developed with Spring Boot, PySpark and Python. |
+| `v2.0` | Some simple "e-commerce" modules that I've created while doing a Kafka course from Alura. |
 
 The `master` branch will have the most recent code that I've created, to check more details of a past development checkout the specific tag you want.
 
-## Projects
+## The Project
 
-01. [e-commerce] 👉 Exploring Kafka creating simple producers and consumers.
+During the Alura Kafka trail courses, I developed some simple "e-commerce" modules in order to put in practice the Kafka learnings.  
+Okay, let's go through the project components...
 
-[e-commerce]: projects/e-commerce/README.md
+- **New Order Service**  
+This is the producer and it is responsible for creating the new orders.
+- **Fraud Detector Service**  
+This consumer is responsible for fraud detection in new orders.
+- **e-Mail Service**  
+This consumer is responsible for sending an e-mail to the customers.
+- **Log Service**  
+This consumer is responsible for logging all the messages that were sent through all the topics.
 
-> ℹ️ To execute the projects you will need a Kafka instance running, to create your check the [next section](#quick-start).
+> 💡 It's important to mention the focus here is to learn about Kafka, okay?
 
-### Quick Start
+Here it is the project diagram, with all the components connecting to each other.
+
+![diagram](.docs/ecommerce-diagram.png)
+
+## Quick Start
+
+To execute the services here you will need a Kafka instance up and running, let's up a Kafka node.
+
+### Environment
 
 In this section we are going to up a local Kafka.
 
@@ -28,59 +47,30 @@ In this section we are going to up a local Kafka.
 # Build & Up
 docker-compose build && docker-compose up -d
 
-# Logs
-docker-compose logs kafka
-
 # Shutting Down
 docker-compose down
 ```
 
-### Playground
+**Do you want to test this Kafka via CLI?**  
+I created [this document](kafka/README.md) with some nice commands for you to try 🤓
 
-Here are some terminal commands you can try to explore your own Kafka \o/
+### Build & Run
+
+Now, let's see how to prepare your development environment.
 
 ```bash
-# Create your first topic \o/
-docker-compose exec kafka kafka-topics.sh \
-    --create \
-    --bootstrap-server "localhost:9092" \
-    --replication-factor "1" \
-    --partitions "1" \
-    --topic "MY_TOPIC"
+# Optional Step
+pyenv local 3.10.6
 
-# Check the available topics
-docker-compose exec kafka kafka-topics.sh --list --bootstrap-server "localhost:9092"
+# 🐍 Python VEnv
+python3 -m venv .venv \
+    && source .venv/bin/activate \
+    && pip install --upgrade pip
 
-# Producing messages ✉️
-docker-compose exec kafka kafka-console-producer.sh \
-    --broker-list "localhost:9092" \
-    --topic "MY_TOPIC"
-
-# Consuming messages 🔎
-docker-compose exec kafka kafka-console-consumer.sh \
-    --bootstrap-server "localhost:9092" \
-    --topic "MY_TOPIC" --from-beginning
-
-# Cheking our topics
-docker-compose exec kafka kafka-consumer-groups.sh \
-    --all-groups \
-    --describe \
-    --bootstrap-server "localhost:9092"
+# TODO: Split Services and Add Poetry
+# TODO: Create Makefile
+# TODO: Remove Inner README.
 ```
-
-### Interesting Stuff
-
-**What about having multiple consumers on the same topic?**
-You can have multiple consumers subscribed to the same topic.  
-If their group ids are different, then all of them will receive the messages.  
-If they belong to the same group id the consumers will be divided to read the available partitions. This means the consumers in the same group won't be receiving the same messages, this also means that you CAN'T have more consumers than partitions, because if you do the extra consumers will have no use, since no partitions will be assigned to them.
-
-**How does the Kafka split the messages within the partitions?**  
-Kafka defines the message partition based on the message key.
-
-**Rebalancing Issues**  
-One way to avoid issues related to Kafka rebalancing is setting the "max poll records" configuration to `1`.  
-In this way the consumer will receive 1 message at a time, so if the rebalance happens the Kafka may lose the track at maximum of 1 record.
 
 ## Useful Links
 
