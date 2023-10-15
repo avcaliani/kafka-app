@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "kafka-core"
+version = "0.0.0"
+description = "Kafka core module."
+authors = ["Anthony Caliani <github.com/avcaliani>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+kafka-python = "^2.0.2"
+names = "^0.3.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

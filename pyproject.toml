@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "kafka-app"
+version = "0.0.0"
+description = "Kafka App, is actually few modules from a e-commerce that works via message queues."
+authors = ["Anthony Caliani <github.com/avcaliani>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+order-service = {path = "projects/order-service", develop = true}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
