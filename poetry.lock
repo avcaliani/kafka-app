@@ -11,7 +11,6 @@ develop = true
 
 [package.dependencies]
 kafka-python = "^2.0.2"
-names = "^0.3.0"
 
 [package.source]
 type = "directory"
@@ -52,6 +51,7 @@ develop = true
 
 [package.dependencies]
 kafka-core = {path = "../kafka-core", develop = true}
+names = "^0.3.0"
 
 [package.source]
 type = "directory"

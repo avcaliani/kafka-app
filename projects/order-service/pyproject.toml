@@ -4,11 +4,11 @@ version = "0.0.0"
 description = "🛒 e-Commerce - Order Service"
 authors = ["Anthony Caliani <github.com/avcaliani>"]
 license = "MIT"
-readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
 kafka-core = {path = "../kafka-core", develop = true}
+names = "^0.3.0"
 
 
 [build-system]
