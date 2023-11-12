@@ -46,6 +46,7 @@ Having your setup ready, now you can execute each service 🚀
 ```bash
 # Starting the services
 python -m email_service.main # 📧
+python -m fraud_service.main # 🕵️‍♂️
 python -m order_service.main # 📦
 
 # WiP 🟡

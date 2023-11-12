@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "fraud-service"
+version = "0.0.0"
+description = "🕵️‍♂️ e-Commerce - Fraud Service"
+authors = ["Anthony Caliani <github.com/avcaliani>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+kafka-core = {path = "../kafka-core", develop = true}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
