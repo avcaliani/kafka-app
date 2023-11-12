@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "kafka-core"
 version = "0.0.0"
-description = "Kafka core module."
+description = "🧠 Kafka core module"
 authors = ["Anthony Caliani <github.com/avcaliani>"]
 license = "MIT"
 

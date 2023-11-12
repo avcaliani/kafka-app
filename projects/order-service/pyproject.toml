@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "order-service"
 version = "0.0.0"
-description = "🛒 e-Commerce - Order Service"
+description = "📦 e-Commerce - Order Service"
 authors = ["Anthony Caliani <github.com/avcaliani>"]
 license = "MIT"
 

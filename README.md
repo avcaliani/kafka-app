@@ -1,82 +1,54 @@
 # 📫 Kafka App
 
 ![License](https://img.shields.io/github/license/avcaliani/kafka-app?logo=apache&color=lightseagreen)
-![#](https://img.shields.io/badge/python-3.10.x-yellow.svg)
 
-This is my Apache Kafka repository.  
-Here you will find some stuff that I've done while I was learning about how to work with Apache Kafka.
+During [Alura's Kafka] learning path, I developed some simple "e-commerce" modules in order to put into practice the Kafka learnings.
 
-You can find all the exeperiments I've done through the **repository tags**.  
+> 💡 It's important to mention the focus here is to learn about Kafka, which means that you won't find very complicated business logic, okay?
 
-| tag    | description |
-|--------|-------------|
-| `v1.0` | PoCs that produce and consume data from Kafka, they were developed with Spring Boot, PySpark and Python. |
-| `v2.0` | Some simple "e-commerce" modules that I've created while doing a Kafka course from Alura. |
+So, **let's navigate** in this project 🚣‍♂️
 
-The `master` branch will have the most recent code that I've created, to check more details of a past development checkout the specific tag you want.
+[Alura's Kafka]: https://www.alura.com.br/formacao-kafka
 
-## The Project
+## Project Structure
 
-During the Alura Kafka trail courses, I developed some simple "e-commerce" modules in order to put in practice the Kafka learnings.  
-Okay, let's go through the project components...
+In this project I'm using a "monorepo" structure with the following components...
 
-- **New Order Service**  
-This is the producer and it is responsible for creating the new orders.
-- **Fraud Detector Service**  
-This consumer is responsible for fraud detection in new orders.
-- **e-Mail Service**  
-This consumer is responsible for sending an e-mail to the customers.
-- **Log Service**  
-This consumer is responsible for logging all the messages that were sent through all the topics.
+```text
+projects
+├─ 🧠 kafka-core    : Module that contains all kafka common code and dependencies.
+├─ 📦 order-service : Orders service.
+├─ 🕵️‍♂️ fraud-service : Fraud detector service.
+├─ 📧 email-service : Email Service.
+└─ 📖 log-service   : Service responsible for logging every message that happens in the system.
+```
 
-> 💡 It's important to mention the focus here is to learn about Kafka, okay?
+Each component is a sub-project in this repository, also this structure enables us to isolate the modules, but also lets us reuse common code, which is what I did creating the `kafka-core`.
 
-Here it is the project diagram, with all the components connecting to each other.
+> **💡 Monorepo Inspiration**  
+> To create this project structure I used the "[python-monorepo]" repository as a reference, which is an amazing repository with very clear and didactic examples.  
+> I do recommend you to have a look at [@ya-mori]'s work.
+
+[@ya-mori]: https://github.com/ya-mori
+[python-monorepo]: https://github.com/ya-mori/python-monorepo/tree/master/sample_2
+
+### Diagram
 
 ![diagram](.docs/ecommerce-diagram.png)
 
-## Quick Start
+## How do I execute this project?
 
-To execute the services here you will need a Kafka instance up and running, let's up a Kafka node.
+First of all, check the 👉 [Dev Setup](.docs/dev-setup.md) 👈 document.  
+There you will find all the instructions to prepare your machine.
 
-### Environment
-
-In this section we are going to up a local Kafka.
-
-```bash
-# Build & Up
-docker-compose build && docker-compose up -d
-
-# Shutting Down
-docker-compose down
-```
-
-**Do you want to test this Kafka via CLI?**  
-I created [this document](kafka/README.md) with some nice commands for you to try 🤓
-
-### Build & Run
-
-Now, let's see how to prepare your development environment.
+Having your setup ready, now you can execute each service 🚀
 
 ```bash
-# Optional Step
-pyenv local 3.10.6
+# Starting the services
+poetry run python -m order_service.main
 
-# 🐍 Python VEnv
-python3 -m venv .venv \
-    && source .venv/bin/activate \
-    && pip install --upgrade pip
-
-# TODO: Split Services and Add Poetry
-# TODO: Create Makefile
-# TODO: Remove Inner README.
+# WiP 🟡
 ```
-
-## Useful Links
-
-- [Apache Kafka](https://kafka.apache.org/downloads)
-- [Kafka Tool - UI Tool 4 Kafka](https://www.kafkatool.com/download.html)
-- [Medium: Aprendendo na prática](https://medium.com/trainingcenter/apache-kafka-codifica%C3%A7%C3%A3o-na-pratica-9c6a4142a08f)
 
 <br/>
 

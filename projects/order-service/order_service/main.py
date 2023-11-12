@@ -51,7 +51,7 @@ def run() -> None:
 
 
 if __name__ == "__main__":
-    print("🛒 NEW ORDER SERVICE\nPress Ctrl+c to stop!")
+    print("📦 NEW ORDER SERVICE\nPress Ctrl+c to stop!")
     try:
         run()
     except (KeyboardInterrupt, SystemExit):
