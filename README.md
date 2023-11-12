@@ -49,8 +49,6 @@ python -m email_service.main # 📧
 python -m fraud_service.main # 🕵️‍♂️
 python -m log_service.main   # 📖
 python -m order_service.main # 📦
-
-# WiP 🟡
 ```
 
 <br/>
