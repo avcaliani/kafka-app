@@ -10,6 +10,7 @@ readme = "README.md"
 python = "^3.8"
 email-service = {path = "projects/email-service", develop = true}
 fraud-service = {path = "projects/fraud-service", develop = true}
+log-service = {path = "projects/log-service", develop = true}
 order-service = {path = "projects/order-service", develop = true}
 
 

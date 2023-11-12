@@ -63,6 +63,22 @@ files = [
 crc32c = ["crc32c"]
 
 [[package]]
+name = "log-service"
+version = "0.0.0"
+description = "📖 e-Commerce - Log Service"
+optional = false
+python-versions = "^3.8"
+files = []
+develop = true
+
+[package.dependencies]
+kafka-core = {path = "../kafka-core", develop = true}
+
+[package.source]
+type = "directory"
+url = "projects/log-service"
+
+[[package]]
 name = "names"
 version = "0.3.0"
 description = "Generate random names"
@@ -92,4 +108,4 @@ url = "projects/order-service"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "b47043275257611fe4f28c1aa257a047dec5255d7ebb98d3ea49c9afadc01c1a"
+content-hash = "33a49d0fc4ce68d7099dcaf2235ca6b98e722ddb4a4cca84bdc12f91a9facf0b"
