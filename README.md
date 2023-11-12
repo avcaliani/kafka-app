@@ -45,7 +45,8 @@ Having your setup ready, now you can execute each service 🚀
 
 ```bash
 # Starting the services
-poetry run python -m order_service.main
+python -m email_service.main # 📧
+python -m order_service.main # 📦
 
 # WiP 🟡
 ```

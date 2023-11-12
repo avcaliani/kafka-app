@@ -30,17 +30,7 @@ files = [
 [package.extras]
 crc32c = ["crc32c"]
 
-[[package]]
-name = "names"
-version = "0.3.0"
-description = "Generate random names"
-optional = false
-python-versions = "*"
-files = [
-    {file = "names-0.3.0.tar.gz", hash = "sha256:726e46254f2ed03f1ffb5d941dae3bc67c35123941c29becd02d48d0caa2a671"},
-]
-
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "c099347727665bbb6182d600658797e45b046e7ddda48d050a936b5c0b99393b"
+content-hash = "2cef597e045c72216991dbe12346db456da434f0608c1f2924589c0f7e53a093"

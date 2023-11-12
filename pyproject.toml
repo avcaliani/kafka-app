@@ -8,6 +8,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
+email-service = {path = "projects/email-service", develop = true}
 order-service = {path = "projects/order-service", develop = true}
 
 
