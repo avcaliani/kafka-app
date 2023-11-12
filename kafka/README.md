@@ -1,28 +1,33 @@
-# 📫 Kafka
+<img src="https://apache.org/logos/res/kafka/kafka_highres.png" width="128px" align="right"/>
 
-As mentioned in the project [README](../README.md#environment) you have to up your docker environment, then you will be able to use your own Kafka.  
+# 📟 Kafka on CLI
+
+![License](https://img.shields.io/github/license/avcaliani/kafka-app?logo=apache&color=lightseagreen)
+
+As mentioned in the "[Dev Setup](../.docs/dev-setup.md#kafka-setup)" document you have to up your docker environment, then you will be able to use your own Kafka.
+
 One thing you can do is to check the container logs, like this...
 
 ```bash
 docker-compose logs kafka
 ```
 
-### Docker Structure
+## Docker Structure
 
 ```bash
 kafka
 ├── Dockerfile        # 🐋 Main docker file.
 ├── README.md         # 😁 This document.
-├── init.sh           # 🟢 Initialization script for Zookeper and Kafka.
+├── init.sh           # 🟢 Initialization script for ZooKeeper and Kafka.
 └── kafka.properties  # 📝 Kafka properties with custom configs.
 ```
 
-### Playground
+## Playground
 
 Here are some terminal commands you can try to explore your own Kafka 😎
 
 ```bash
-# Create your first topic \o/
+# Creating your first topic \o/
 docker-compose exec kafka kafka-topics.sh \
     --create \
     --bootstrap-server "localhost:9092" \
@@ -30,7 +35,7 @@ docker-compose exec kafka kafka-topics.sh \
     --partitions "1" \
     --topic "MY_TOPIC"
 
-# Check the available topics
+# Checking the available topics
 docker-compose exec kafka kafka-topics.sh --list --bootstrap-server "localhost:9092"
 
 # Producing messages ✉️
@@ -43,7 +48,7 @@ docker-compose exec kafka kafka-console-consumer.sh \
     --bootstrap-server "localhost:9092" \
     --topic "MY_TOPIC" --from-beginning
 
-# Cheking our topics
+# Checking our topics
 docker-compose exec kafka kafka-consumer-groups.sh \
     --all-groups \
     --describe \
@@ -54,7 +59,4 @@ docker-compose exec kafka kafka-consumer-groups.sh \
 
 - [Apache Kafka](https://kafka.apache.org/downloads)
 - [Kafka Tool - UI Tool 4 Kafka](https://www.kafkatool.com/download.html)
-
-<br/>
-
-🧙‍♂️ _"If in doubt Meriadoc, always follow your nose." - Gandalf_
+- [Medium: Learning in Practice](https://medium.com/trainingcenter/apache-kafka-codifica%C3%A7%C3%A3o-na-pratica-9c6a4142a08f)
