@@ -1,5 +1,5 @@
 from datetime import datetime
-from random import randint
+from random import randint, random
 from time import sleep
 from typing import Tuple
 from uuid import uuid4
@@ -22,29 +22,28 @@ def new_order() -> Tuple[dict, dict]:
         "id": str(uuid4()),
         "customer_id": customer_id,
         "items": [],
+        "total": round(random() * randint(100, 10000), 2),
         "created_at": datetime.utcnow().strftime(DATETIME_FORMAT),
     }
     return email_msg, order_msg
 
 
 def run() -> None:
-    n_messages = randint(10, 1000)
+    n_messages = randint(5, 10)
     print(f"Messages to be sent 👉 {n_messages}")
     with new_producer() as producer:
         for _ in range(0, n_messages):
             email_msg, order_msg = new_order()
-            customer_id = bytes(order_msg["customer_id"], "utf-8")
+            message_key = bytes(order_msg["customer_id"], "utf-8")
             show_sent_message(
                 producer.send(
-                    topic="ECOMMERCE_NEW_ORDER", key=customer_id, value=order_msg
-                ),
-                order_msg,
+                    topic="ECOMMERCE_NEW_ORDER", key=message_key, value=order_msg
+                )
             )
             show_sent_message(
                 producer.send(
-                    topic="ECOMMERCE_NEW_EMAIL", key=customer_id, value=email_msg
-                ),
-                email_msg,
+                    topic="ECOMMERCE_NEW_EMAIL", key=message_key, value=email_msg
+                )
             )
             sleep(randint(0, 10) / 10)
         print(f"\n{n_messages} messages sent ✅")

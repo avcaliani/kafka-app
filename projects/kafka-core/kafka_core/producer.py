@@ -20,14 +20,17 @@ def new_producer() -> KafkaProducer:
         producer.close()
 
 
-def show_sent_message(response: FutureRecordMetadata, message: str) -> None:
+def show_sent_message(response: FutureRecordMetadata, message: str = None) -> None:
     metadata: RecordMetadata = response.get()
     timestamp = datetime.utcfromtimestamp(metadata.timestamp / 1000)
-    print(
-        f"📦 "
-        f"{green('Topic')}: {metadata.topic} | "
-        f"{green('Partition')}: {metadata.partition} | "
-        f"{green('Offset')}: {metadata.offset} | "
-        f"{green('Timestamp')}: {timestamp.strftime(DATETIME_FORMAT)} | "
-        f"{green('Message')}: {message}"
+    log_msg = (
+        f"📦 New Message Sent\n"
+        f"├─ {green('Topic')}: {metadata.topic}\n"
+        f"├─ {green('Partition')}: {metadata.partition} / {green('Offset')}: {metadata.offset}\n"
     )
+    time_log = f"{green('Timestamp')}: {timestamp.strftime(DATETIME_FORMAT)}"
+    if message:
+        log_msg += f"├─ {time_log}\n└─ {green('Message')}: {message}\n"
+    else:
+        log_msg += f"└─ {time_log}\n"
+    print(log_msg)
