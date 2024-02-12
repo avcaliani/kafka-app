@@ -41,14 +41,13 @@ Each component is a sub-project in this repository, also this structure enables 
 First of all, check the 👉 [Dev Setup](.docs/dev-setup.md) 👈 document.  
 There you will find all the instructions to prepare your machine.
 
-Having your setup ready, now you can execute each service 🚀
+Having your setup ready, now you can execute the services 🚀
 
 ```bash
-# Starting the services
-python -m email_service.main # 📧
-python -m fraud_service.main # 🕵️‍♂️
-python -m log_service.main   # 📖
-python -m order_service.main # 📦
+# Activate the Python VEnv
+source .venv/bin/activate
+# Then, choose a service to start...
+make services   
 ```
 
 <br/>
