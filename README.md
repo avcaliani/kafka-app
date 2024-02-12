@@ -19,8 +19,9 @@ projects
 ├─ 🧠 kafka-core    : Module that contains all kafka common code and dependencies.
 ├─ 📦 order-service : Orders service.
 ├─ 🕵️‍♂️ fraud-service : Fraud detector service.
-├─ 📧 email-service : Email Service.
-└─ 📖 log-service   : Service responsible for logging every message that happens in the system.
+├─ 📧 email-service : Email service.
+├─ 📖 log-service   : Service responsible for logging every message that happens in the system.
+└─ ☃️ user-service  : User service, responsible for storing the users.
 ```
 
 Each component is a sub-project in this repository, also this structure enables us to isolate the modules, but also lets us reuse common code, which is what I did creating the `kafka-core`.
