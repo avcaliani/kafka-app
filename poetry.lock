@@ -105,7 +105,23 @@ names = "^0.3.0"
 type = "directory"
 url = "projects/order-service"
 
+[[package]]
+name = "user-service"
+version = "0.0.0"
+description = "☃️ e-Commerce - User Service"
+optional = false
+python-versions = "^3.8"
+files = []
+develop = true
+
+[package.dependencies]
+kafka-core = {path = "../kafka-core", develop = true}
+
+[package.source]
+type = "directory"
+url = "projects/user-service"
+
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "33a49d0fc4ce68d7099dcaf2235ca6b98e722ddb4a4cca84bdc12f91a9facf0b"
+content-hash = "b79ff0600fac1e30f4b665c4c88afc2769d9b67ef39bd0b9d2d7425caffb3972"

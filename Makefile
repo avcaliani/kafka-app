@@ -6,6 +6,7 @@ services:
 	@echo "  » fraud-service 🕵️‍♂️"
 	@echo "  » log-service 📖"
 	@echo "  » order-service 📦"
+	@echo "  » user-service ☃️"
 	@echo ""
 	@echo "⏰ $(shell date)"
 
@@ -24,4 +25,7 @@ log-service: init-env
 order-service: init-env
 	python -m order_service.main
 
-.PHONY: services init-env email-service fraud-service log-service order-service
+user-service: init-env
+	python -m user_service.main
+
+.PHONY: services init-env email-service fraud-service log-service order-service user-service
