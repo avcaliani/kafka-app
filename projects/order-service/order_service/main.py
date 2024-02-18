@@ -12,15 +12,18 @@ from kafka_core.producer import new_producer, show_sent_message
 def new_order() -> Tuple[dict, dict]:
     customer_id = str(uuid4())
     customer_name = names.get_full_name()
+    customer_email = f"{customer_name.replace(' ', '.').lower()}@github.com"
     email_msg = {
         "customer_id": customer_id,
         "customer_name": customer_name,
-        "customer_email": f"{customer_name.replace(' ', '.').lower()}@github.com",
+        "customer_email": customer_email,
         "email_template": "template__new_order",
     }
     order_msg = {
         "id": str(uuid4()),
         "customer_id": customer_id,
+        "customer_name": customer_name,
+        "customer_email": customer_email,
         "items": [],
         "created_at": datetime.utcnow().strftime(DATETIME_FORMAT),
     }
