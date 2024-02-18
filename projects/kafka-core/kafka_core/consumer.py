@@ -32,14 +32,15 @@ def new_consumer(
         consumer.close()
 
 
-def show_received_message(message: ConsumerRecord) -> None:
+def show_received_message(message: ConsumerRecord, show_message: bool = False) -> None:
     timestamp = datetime.utcfromtimestamp(message.timestamp / 1000)
     print(
         f"✉️ "
-        f"{green('Topic')}: {message.topic} | "
-        f"{green('Partition')}: {message.partition} | "
-        f"{green('Offset')}: {message.offset} | "
-        f"{green('Key')}: {message.key} | "
-        f"{green('Timestamp')}: {timestamp.strftime(DATETIME_FORMAT)} | "
-        f"{green('Message')}: {message.value}"
+        f"{green('T')}: {message.topic} | "
+        f"{green('P')}: {message.partition} | "
+        f"{green('O')}: {message.offset} | "
+        f"{green('K')}: {message.key.decode('utf-8')} | "
+        f"{green('TS')}: {timestamp.strftime(DATETIME_FORMAT)}"
     )
+    if show_message:
+        print(f"{green('Message')}: {message.value}")
