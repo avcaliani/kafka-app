@@ -11,21 +11,22 @@ services:
 	@echo "⏰ $(shell date)"
 
 init-env:
+	docker-compose down
 	docker-compose up -d
 
-email-service: init-env
+email-service:
 	python -m email_service.main
 
-fraud-service: init-env
+fraud-service:
 	python -m fraud_service.main
 
-log-service: init-env
+log-service:
 	python -m log_service.main
 
-order-service: init-env
+order-service:
 	python -m order_service.main
 
-user-service: init-env
+user-service:
 	python -m user_service.main
 
 .PHONY: services init-env email-service fraud-service log-service order-service user-service
