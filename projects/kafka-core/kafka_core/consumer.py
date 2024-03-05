@@ -39,8 +39,8 @@ def show_received_message(message: ConsumerRecord, show_message: bool = False) -
         f"{green('T')}: {message.topic} | "
         f"{green('P')}: {message.partition} | "
         f"{green('O')}: {message.offset} | "
-        f"{green('K')}: {message.key.decode('utf-8')} | "
-        f"{green('TS')}: {timestamp.strftime(DATETIME_FORMAT)}"
+        f"{green('TS')}: {timestamp.strftime(DATETIME_FORMAT)} | "
+        f"{green('K')}: {message.key.decode('utf-8')}"
     )
     if show_message:
         print(f"{green('Message')}: {message.value}")

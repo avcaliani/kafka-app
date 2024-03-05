@@ -10,18 +10,15 @@ from kafka_core.producer import new_producer, show_sent_message
 
 
 def new_order() -> Tuple[dict, dict]:
-    customer_id = str(uuid4())
     customer_name = names.get_full_name()
     customer_email = f"{customer_name.replace(' ', '.').lower()}@github.com"
     email_msg = {
-        "customer_id": customer_id,
         "customer_name": customer_name,
         "customer_email": customer_email,
         "email_template": "template__new_order",
     }
     order_msg = {
         "id": str(uuid4()),
-        "customer_id": customer_id,
         "customer_name": customer_name,
         "customer_email": customer_email,
         "items": [],
@@ -36,16 +33,16 @@ def run() -> None:
     with new_producer() as producer:
         for _ in range(0, n_messages):
             email_msg, order_msg = new_order()
-            customer_id = bytes(order_msg["customer_id"], "utf-8")
+            customer_email = bytes(order_msg["customer_email"], "utf-8")
             show_sent_message(
                 producer.send(
-                    topic="ECOMMERCE_NEW_ORDER", key=customer_id, value=order_msg
+                    topic="ECOMMERCE_NEW_ORDER", key=customer_email, value=order_msg
                 ),
                 order_msg,
             )
             show_sent_message(
                 producer.send(
-                    topic="ECOMMERCE_NEW_EMAIL", key=customer_id, value=email_msg
+                    topic="ECOMMERCE_NEW_EMAIL", key=customer_email, value=email_msg
                 ),
                 email_msg,
             )

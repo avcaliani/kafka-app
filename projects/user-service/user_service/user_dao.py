@@ -1,3 +1,5 @@
+from uuid import uuid4
+
 from user_service.database import Database
 
 __db = Database()
@@ -17,10 +19,11 @@ def create_table() -> None:
 
 
 def new_user(customer: dict) -> None:
+    customer_id = str(uuid4())
     query = f"""
         INSERT INTO customers(customer_id, customer_email, customer_name) 
         VALUES(
-            '{customer.get("customer_id")}', 
+            '{customer_id}', 
             '{customer.get("customer_email")}', 
             '{customer.get("customer_name")}'
         )
@@ -28,5 +31,5 @@ def new_user(customer: dict) -> None:
     """.strip()
     __db.execute(query)
     return __db.select(
-        f"SELECT * FROM customers WHERE customer_id = \"{customer.get('customer_id')}\" LIMIT 1"
+        f"SELECT * FROM customers WHERE customer_id = \"{customer_id}\" LIMIT 1"
     )
