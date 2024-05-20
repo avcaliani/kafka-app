@@ -8,7 +8,7 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.8"
 kafka-core = {path = "../kafka-core", develop = true}
-names = "^0.3.0"
+fastapi = "^0.111.0"
 
 
 [build-system]
