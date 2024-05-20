@@ -1,6 +1,6 @@
 FROM amazoncorretto:11-alpine3.18
 
-ARG KAFKA_VERSION="3.5.1"
+ARG KAFKA_VERSION="3.7.0"
 ARG KAFKA_SCALA_VERSION="2.13"
 
 ENV KAFKA_HOME="/opt/kafka"
