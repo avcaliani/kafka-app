@@ -8,12 +8,16 @@ from kafka_core.common import DATETIME_FORMAT, DEFAULT_SEVER, green
 from kafka import KafkaProducer
 
 
-@contextmanager
-def new_producer() -> KafkaProducer:
-    producer = KafkaProducer(
+def get_instance() -> KafkaProducer:
+    return KafkaProducer(
         bootstrap_servers=[DEFAULT_SEVER],
         value_serializer=lambda v: json.dumps(v).encode("utf-8"),
     )
+
+
+@contextmanager
+def new_producer():
+    producer = get_instance()
     try:
         yield producer
     finally:
@@ -21,7 +25,7 @@ def new_producer() -> KafkaProducer:
 
 
 def show_sent_message(
-    response: FutureRecordMetadata, message: str, show_message: bool = False
+    response: FutureRecordMetadata, message: str = None, show_message: bool = False
 ) -> None:
     metadata: RecordMetadata = response.get()
     timestamp = datetime.utcfromtimestamp(metadata.timestamp / 1000)
