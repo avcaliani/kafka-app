@@ -26,10 +26,10 @@ In this section we are going up a **local** Kafka.
 
 ```bash
 # Build & Up
-docker-compose build && docker-compose up -d
+docker compose build && docker compose up -d
 
 # Shutting Down
-docker-compose down
+docker compose down
 ```
 
 **Do you want to test this Kafka via CLI?**  
