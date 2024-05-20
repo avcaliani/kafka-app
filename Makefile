@@ -24,7 +24,7 @@ log-service:
 	python -m log_service.main
 
 order-service:
-	python -m order_service.main
+	uvicorn order_service.main:app --host 0.0.0.0 --port 8000
 
 user-service:
 	python -m user_service.main
