@@ -28,7 +28,7 @@ Here are some terminal commands you can try to explore your own Kafka 😎
 
 ```bash
 # Creating your first topic \o/
-docker-compose exec kafka kafka-topics.sh \
+docker compose exec kafka kafka-topics.sh \
     --create \
     --bootstrap-server "localhost:9092" \
     --replication-factor "1" \
@@ -36,20 +36,20 @@ docker-compose exec kafka kafka-topics.sh \
     --topic "MY_TOPIC"
 
 # Checking the available topics
-docker-compose exec kafka kafka-topics.sh --list --bootstrap-server "localhost:9092"
+docker compose exec kafka kafka-topics.sh --list --bootstrap-server "localhost:9092"
 
 # Producing messages ✉️
-docker-compose exec kafka kafka-console-producer.sh \
+docker compose exec kafka kafka-console-producer.sh \
     --broker-list "localhost:9092" \
     --topic "MY_TOPIC"
 
 # Consuming messages 🔎
-docker-compose exec kafka kafka-console-consumer.sh \
+docker compose exec kafka kafka-console-consumer.sh \
     --bootstrap-server "localhost:9092" \
     --topic "MY_TOPIC" --from-beginning
 
 # Checking our topics
-docker-compose exec kafka kafka-consumer-groups.sh \
+docker compose exec kafka kafka-consumer-groups.sh \
     --all-groups \
     --describe \
     --bootstrap-server "localhost:9092"
