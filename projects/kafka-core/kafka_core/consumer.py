@@ -13,7 +13,7 @@ def new_consumer(
     group_id: str, topics: list = None, topic_pattern: str = None
 ) -> KafkaConsumer:
     consumer = KafkaConsumer(
-        bootstrap_servers=[DEFAULT_SEVER],
+        bootstrap_servers=DEFAULT_SEVER,
         group_id=group_id,
         value_deserializer=lambda msg: json.loads(msg.decode("utf-8")),
         enable_auto_commit=True,

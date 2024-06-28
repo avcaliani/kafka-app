@@ -10,7 +10,7 @@ from kafka import KafkaProducer
 
 def get_instance() -> KafkaProducer:
     return KafkaProducer(
-        bootstrap_servers=[DEFAULT_SEVER],
+        bootstrap_servers=DEFAULT_SEVER,
         value_serializer=lambda v: json.dumps(v).encode("utf-8"),
     )
 
