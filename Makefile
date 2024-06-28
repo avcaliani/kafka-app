@@ -10,9 +10,9 @@ services:
 	@echo ""
 	@echo "⏰ $(shell date)"
 
-init-env:
-	docker-compose down
-	docker-compose up -d
+# 👇 This command is used to wait kafka to be up and running.
+delayed-start:
+	sleep 30
 
 email-service:
 	python -m email_service.main
@@ -29,4 +29,4 @@ order-service:
 user-service:
 	python -m user_service.main
 
-.PHONY: services init-env email-service fraud-service log-service order-service user-service
+.PHONY: services delayed-start email-service fraud-service log-service order-service user-service

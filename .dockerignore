@@ -1,0 +1,6 @@
+# Project Stuff
+.docs
+.github
+
+# Virtual Environment
+.venv
