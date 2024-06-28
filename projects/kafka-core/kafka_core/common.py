@@ -1,7 +1,8 @@
+from os import environ
 from typing import Any
 
 DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
-DEFAULT_SEVER = "localhost:9092"
+DEFAULT_SEVER = environ.get("APP_KAFKA_HOST", "localhost:9092").split(",")
 
 
 def green(value: Any) -> str:
