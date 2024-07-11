@@ -39,17 +39,26 @@ Each component is a sub-project in this repository, also this structure enables 
 
 ## How do I execute this project?
 
-First of all, check the 👉 [Dev Setup](.docs/dev-setup.md) 👈 document.  
-There you will find all the instructions to prepare your machine.
-
-Having your setup ready, now you can execute the services 🚀
+You just need to execute the services 🚀
 
 ```bash
-# Activate the Python VEnv
-source .venv/bin/activate
-# Then, choose a service to start...
-make services   
+# Add the "-d" flag if you want to execute the services in background.
+docker compose up
 ```
+
+Then, to trigger the services, you have to do a HTTP POST request to the [order service](./projects/order-service/README.md).
+
+![docker-running](.docs/docker-running.png)
+
+To shutdown the services, you just need to execute...
+
+```bash
+docker compose down
+```
+
+> **Development Guide**  
+> First of all, check the 👉 [Dev Setup](.docs/dev-setup.md) 👈 document.  
+> There you will find all the instructions to prepare your machine.
 
 <br/>
 
