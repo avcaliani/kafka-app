@@ -37,6 +37,11 @@ Each component is a sub-project in this repository, also this structure enables 
 
 ![diagram](.docs/ecommerce-diagram.png)
 
+> **💡 Note**  
+> I did not create all the resources in the Alura Course, but I did the course until the end.  
+> So I created a document containing the diagram with the rest of the architecture, new learnings and notes.  
+> [Document](https://docs.google.com/document/d/1vsV_y37GA8BuNp7H-Rv1jyg7cki5o1MzUbXrL21ZO4I) at Google Docs 📘
+
 ## How do I execute this project?
 
 You just need to execute the services 🚀
