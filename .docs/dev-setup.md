@@ -33,7 +33,7 @@ docker compose down
 ```
 
 **Do you want to test this Kafka via CLI?**  
-I created this document 👉 [Kafka on CLI](../kafka/README.md) 👈 with some nice commands for you to try 🤓
+I created this document 👉 [Kafka on CLI](https://github.com/avcaliani/kafka-in-docker) 👈 with some nice commands for you to try 🤓
 
 ### Development Setup
 

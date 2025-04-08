@@ -12,7 +12,7 @@ services:
 
 # 👇 This command is used to wait kafka to be up and running.
 delayed-start:
-	sleep 30
+	sleep 5
 
 email-service:
 	python -m email_service.main

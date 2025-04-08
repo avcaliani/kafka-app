@@ -1,19 +1,17 @@
 services:
 
-  kafka:
-    image: kafka-dev
-    container_name: kafka
-    build: ./kafka
+  kafka-dev:
+    image: avcaliani/kafka-in-docker
+    container_name: kafka-dev
     ports:
-      - 9092:9092 # Kafka
-      - 2181:2181 # Zookeeper
+      - 9092:9092
   
   log-service:
     image: kafka-app-services
     container_name: log-service
     build: .
     depends_on:
-      - kafka
+      - kafka-dev
     command: make delayed-start log-service
   
   email-service:
@@ -21,7 +19,7 @@ services:
     container_name: email-service
     build: .
     depends_on:
-      - kafka
+      - kafka-dev
     command: make delayed-start email-service
   
   fraud-service:
@@ -29,7 +27,7 @@ services:
     container_name: fraud-service
     build: .
     depends_on:
-      - kafka
+      - kafka-dev
     command: make delayed-start fraud-service
 
   order-service:
@@ -37,7 +35,7 @@ services:
     container_name: order-service
     build: .
     depends_on:
-      - kafka
+      - kafka-dev
     ports:
       - 8000:8000
     command: make delayed-start order-service
@@ -47,5 +45,5 @@ services:
     container_name: user-service
     build: .
     depends_on:
-      - kafka
+      - kafka-dev
     command: make delayed-start user-service
